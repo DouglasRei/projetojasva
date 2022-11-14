@@ -2,7 +2,12 @@ import { ThumbsDown, ThumbsUp, Trash } from "phosphor-react";
 import { Avatar } from "./avatar";
 import styles from "./Connent.module.css";
 
-export function Connent(props) {
+export function Connent(props, onDeleteComment) {
+   function handleDeleteComment(){
+
+    onDeleteComment(props);
+   }
+
     return (
         <div className={styles.connent}>
             <Avatar hasborder={false} src={"https://avatars.githubusercontent.com/u/21282250?v=4"} />            
@@ -13,7 +18,7 @@ export function Connent(props) {
                             <strong>Douglas Reis</strong>
                             <time title="25 de outubro de 2022" dateTime="2022-10-25 14:55:00">Publicado a 1h</time>
                         </div>
-                        <button title="Deletar Comentário">
+                        <button onClick={handleDeleteComment} title="Deletar Comentário">
                             <Trash size={20} />
                         </button>
                     </header>
