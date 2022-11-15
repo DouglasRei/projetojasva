@@ -1,0 +1,96 @@
+.connent {
+    margin-top: 1.rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.connent>img {
+    box-sizing: initial;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 8px;
+    border: 4px solid var(--gray-800);
+    outline: 2px solid var(--green-500);
+}
+
+.connentBox {
+    flex: 1rem;
+}
+
+.connentContent {
+    background-color: var(--gray-700);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.connentContent header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.connentAuthorAndTime {
+    display: flex;
+    flex-direction: column;
+}
+
+.connentAuthorAndTime strong {
+    display: block;
+    font-size: 0.850rem;
+    line-height: 1.6;
+}
+
+.connentAuthorAndTime time {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--gray-400);
+
+}
+
+.connentContent header button{
+    background: transparent;
+    border: 0;
+    color: var(--gray-400);
+    cursor: pointer;
+    line-height: 0;
+    border-radius: 2px;
+}
+
+.connentContent header button:hover{
+    color: var(--red-500);
+}
+
+.connentContent p{
+    margin-top: 1rem;
+    color: var(--gray-300);
+}
+
+.connentBox footer{
+    margin-top: 1rem;
+}
+
+.connentBox footer button {
+    background: transparent;
+    border: 0;
+    color: var(--gray-400);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+
+}
+
+.connentBox footer button:hover {
+    color: var(--green-300);
+}
+
+.connentBox footer button svg {
+    margin-right: 0.5rem;
+}
+
+.connentBox footer button span::before {
+padding:  0.25rem;
+content:"\2022" ;
+
+}

@@ -1,9 +1,14 @@
 import { ThumbsDown, ThumbsUp, Trash } from "phosphor-react";
 import { useState } from "react";
-import { Avatar } from "./avatar";
+import { Avatar } from "./Avatar";
 import styles from "./Connent.module.css";
 
-export function Connent({ onDeleteComment, ...props }) {
+interface CommentProps {
+    content:string;
+    onDeleteComment: (comment:string)=> void;
+}
+
+export function Connent({ onDeleteComment, ...props }:CommentProps) {
 
     const [likeCount, setLikeCount] = useState(0);
 
@@ -20,7 +25,7 @@ export function Connent({ onDeleteComment, ...props }) {
 
     return (
         <div className={styles.connent}>
-            <Avatar hasborder={false} src={"https://avatars.githubusercontent.com/u/21282250?v=4"} />
+            <Avatar hasBorder={false} src={"https://avatars.githubusercontent.com/u/21282250?v=4"} alt= "" />
             <div className={styles.connentBox}>
                 <div className={styles.connentContent}>
                     <header>

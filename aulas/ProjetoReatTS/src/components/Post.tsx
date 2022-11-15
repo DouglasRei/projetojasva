@@ -1,12 +1,29 @@
 import { Avatar } from './Avatar';
 import { Connent } from './Connent';
 import styles from './Post.module.css';
-import { format } from 'date-fns/'
-import { useState } from 'react';
+
+import { format } from 'date-fns';
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
+
+interface Author {
+    name: string;
+    role: string;
+    avatarURL: string;
+}
+interface Content {
+    type:  string;
+    content: string;
+}
+interface PostProps{
+    author: Author;
+    publishedAt: Date;
+    content: Content[];
+
+}
 
 
 
-export function Post({ author, publishedAt, content }) {
+export function Post({ author, publishedAt, content }: PostProps) {
     const [comments, setComments] = useState(['Bola de Fogo! ']);
 
 
@@ -14,23 +31,24 @@ export function Post({ author, publishedAt, content }) {
 
     const publishedDateFormat = format(publishedAt, "d  'de' LLLL 'às' HH:mm'h'");
 
-    function handleNewCommentChange() {
+    function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
         event.target.setCustomValidity('');
         setNewcommentText(event.target.value);
     }
 
-    function handleNewCommentInvalid() {
+    function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
         event.target.setCustomValidity('Esse campo e Obrigatorio!');
     }
 
-    function deleteComment(commentToDelete) {
+    function deleteComment(commentToDelete:string) {
         const commentsWithoutDeleteOne = comments.filter(comment => {
             return comment != commentToDelete;
         })
         setComments(commentsWithoutDeleteOne);
     }
 
-    function handleCreatNewComment() {
+    function handleCreatNewComment(event: FormEvent) {
+        
         event.preventDefault()
 
         setComments([...comments, newCommentText]);
@@ -44,7 +62,7 @@ export function Post({ author, publishedAt, content }) {
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
-                    <Avatar hasBorder src={author.avatarUrl} />
+                    <Avatar hasBorder src={author.avatarURL} />
                     <div className={styles.authorinfo}>
                         <strong>{author.name}</strong>
                         <span>{author.role}</span>
